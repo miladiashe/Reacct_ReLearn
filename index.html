@@ -7,11 +7,13 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const root = document.getElementById("root");
-    const Title = () => (<h3 onMouseEnter = { ()  => console.log("마우스 안녕")}>볼살</h3>);
-    const Button = () => (<button onClick ={ () => console.log("말랑")}>말랑</button>);
-    const Container = (<div>
-            <Title /><Button />
-        </div>);
-    ReactDOM.render(Container, root);
+    const App = () => {
+        const [counter, modifier] = React.useState(0);
+        return(
+        <div>
+            <h3>총 클릭수 : 0</h3>
+            <button>아기볼살</button>
+        </div>)};
+    ReactDOM.render(<App />, root);
 </script>
 </html>
