@@ -53,14 +53,19 @@
         return <h3>CM to Inch</h3>;
     }
     const App = () => {
-        const [index, setIndex] = React.useState(0);
+        const [index, setIndex] = React.useState("0");
+        const onSelect = (event) => {
+            setIndex(event.target.value);
+        };
         return (
             <div>
                 <h1>단위변환기</h1>
-                <select>
-                    <option>Minuets & Hours</option>
-                    <option>Cm & Inch</option>
+                <select value={index} onChange={onSelect}>
+                    <option value="0">Minuets & Hours</option>
+                    <option value="1">Cm & Inch</option>
                 </select>
+                {index === "0" ? <MinuetsToHours /> : null}
+                {index === "0" ? <CmToInch /> : null}
             </div>
         );
     };
