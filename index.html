@@ -50,7 +50,45 @@
         );
     };
     function CmToInch() {
-        return <h3>CM to Inch</h3>;
+        const [amount, setAmount] = React.useState(0);
+        const [flip, setFlip] = React.useState(false);
+        const onNumber = (event) => {
+            setAmount(event.target.value);
+        };
+        const onReset = () => {
+            setAmount(0);
+        };
+        const onFlip = () => {
+            onReset();
+            setFlip((value) => !value);
+        };
+        return (
+            <div>
+                <div>
+                    <h3>CM to Inch</h3>
+                    <label htmlFor="cm">cm</label>
+                    <input
+                        id="cm"
+                        value={flip ? amount * 2.54 : amount}
+                        type="number"
+                        onChange={onNumber}
+                        disabled={flip}
+                    ></input>
+                </div>
+                <div>
+                    <label htmlFor="inch">inch</label>
+                    <input
+                        id="inch"
+                        value={flip ? amount : amount / 2.54}
+                        type="number"
+                        onChange={onNumber}
+                        disabled={!flip}
+                    ></input>
+                </div>
+                <button onClick={onReset}>Reset!</button>
+                <button onClick={onFlip}>flip!</button>
+            </div>
+        );
     }
     const App = () => {
         const [index, setIndex] = React.useState("0");
@@ -65,7 +103,7 @@
                     <option value="1">Cm & Inch</option>
                 </select>
                 {index === "0" ? <MinuetsToHours /> : null}
-                {index === "0" ? <CmToInch /> : null}
+                {index === "1" ? <CmToInch /> : null}
             </div>
         );
     };
