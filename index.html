@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <body>
-    <div id="root"></div>
+  <div id="root"></div>
 </body>
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
-    const root = document.getElementById("root");
-    const App = () => {
-        const [counter, setCounter] = React.useState(0);
-        const onClick = () =>{
-            //setCounter(counter + 1);
-            setCounter((current) => current+1);
-            //이게 맞는 방법이다.
-            //예상치못한 업데이트가 일어났다고 해도,
-            //현재 상태값을 확인해서 업데이트되는게 보장된다.
-        };
-        return(
-        <div>
-            <h3>총 클릭수 : {counter}</h3>
-            <button onClick = {onClick}>아기볼살</button>
-        </div>)};
-    ReactDOM.render(<App />, root);
+  const root = document.getElementById("root");
+  const App = () => {
+    const [minutes, setMinutes] = React.useState(0);
+    const onChange = (event) => {
+      setMinutes(event.target.value);
+    };
+    return (
+      <div>
+        <h1>단위변환기</h1>
+        <label htmlFor="min">분</label>
+        <input
+          value={minutes}
+          id="min"
+          placeholder="분"
+          type="number"
+          onChange={onChange}
+        />
+        <h4>{minutes}를 바꾸고 싶군요!</h4>
+        <label htmlFor="hours">시간</label>
+        <input id="hours" placeholder="시간" type="number" />
+      </div>
+    );
+  };
+  ReactDOM.render(<App />, root);
 </script>
-</html>
