@@ -13,8 +13,11 @@
         const onChange = (event) => {
             setAmount(event.target.value);
         };
-        const reset = () => setMinutes(0);
-        const onFlip = () => setFlipped((state) => !state);
+        const reset = () => setAmount(0);
+        const onFlip = () => {
+            reset();
+            setFlipped((state) => !state);
+        };
         return (
             <div>
                 <h1>단위변환기</h1>
