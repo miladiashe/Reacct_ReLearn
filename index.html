@@ -9,7 +9,7 @@
 
 <script type="text/babel">
     const root = document.getElementById("root");
-    const Btn = ({ apple, changeValue }) => {
+    const Btn = ({ apple = "볼살", changeValue }) => {
         return (
             <button
                 onClick={changeValue}
