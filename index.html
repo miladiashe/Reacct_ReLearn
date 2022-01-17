@@ -7,8 +7,29 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const root = document.getElementById("root");
+    const Btn = ({ apple, changeValue }) => {
+        return (
+            <button
+                onClick={changeValue}
+                style={{
+                    backgroundColor: "black",
+                    color: "white",
+                }}
+            >
+                {apple}
+            </button>
+        );
+    };
+    const MemorizedBtn = React.memo(Btn);
     const App = () => {
-        return <div></div>;
+        const [value, setValue] = React.useState("저장");
+        const changeValue = () => setValue("되돌리기");
+        return (
+            <div>
+                <MemorizedBtn apple={value} changeValue={changeValue} />
+                <MemorizedBtn apple="2번" />
+            </div>
+        );
     };
     ReactDOM.render(<App />, root);
 </script>
