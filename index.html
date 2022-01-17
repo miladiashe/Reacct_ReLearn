@@ -49,48 +49,18 @@
             </div>
         );
     };
+    function CmToInch() {
+        return <h3>CM to Inch</h3>;
+    }
     const App = () => {
-        const [amount, setAmount] = React.useState(0);
-        const [flipped, setFlipped] = React.useState(false);
-        const onChange = (event) => {
-            setAmount(event.target.value);
-        };
-        const reset = () => setAmount(0);
-        const onFlip = () => {
-            reset();
-            setFlipped((state) => !state);
-        };
+        const [index, setIndex] = React.useState(0);
         return (
             <div>
                 <h1>단위변환기</h1>
-                <div>
-                    <label htmlFor="min">분</label>
-                    <input
-                        value={flipped ? amount * 60 : amount}
-                        id="min"
-                        placeholder="분"
-                        type="number"
-                        onChange={onChange}
-                        disabled={flipped === true}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="hours">시간</label>
-                    <input
-                        value={flipped ? amount : amount / 60}
-                        id="hours"
-                        placeholder="시간"
-                        type="number"
-                        onChange={onChange}
-                        disabled={flipped === false}
-                    />
-                </div>
-                <button onClick={reset}>Reset</button>
-                <button onClick={onFlip}>
-                    {flipped ? "turn back" : "flip"}
-                </button>
+                <MinuetsToHours />
+                <CmToInch />
             </div>
         );
     };
-    ReactDOM.render(<MinuetsToHours />, root);
+    ReactDOM.render(<App />, root);
 </script>
